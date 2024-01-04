@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}MedSync{% endblock %}
+
+{% block head %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid" style="padding: 5%">
+    <h1 style="text-align:center;font-family:'Kanit'; font-size:6vh;padding-top:2%">Manage Patients</h1>
+    <hr style="width:75%;margin-left:auto;margin-right:auto">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sex</th>
+            <th scope="col">Age</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Heart_Rate</th>
+            <th scope="col">BP_systolic</th>
+            <th scope="col">BP_diastolic</th>
+            <th scope="col">Oxygen_Rate</th>
+            <th scope="col">Cholesterol</th>
+            <th scope="col">Diabetes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for patient in my_patients %}
+            <tr style="background-color: {% if patient.patient_sex == 'Male' %}#7BD3EA{% elif patient.patient_sex == 'Female' %}#FFC0D9{% endif %};">
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ patient.patient_id }}</td>
+              <td>{{ patient.patient_name }}</td>
+              <td>{{ patient.patient_sex }}</td>
+              <td>{{ patient.patient_age }}</td>
+              <td>{{ patient.patient_weight }}</td>
+              <td>{{ patient.heart_rate }}</td>
+              <td>{{ patient.bp_systolic }}</td>
+              <td>{{ patient.bp_diastolic }}</td>
+              <td>{{ patient.oxy_rate }}</td>
+              <td>{{ patient.cholesterol }}</td>
+              <td>{{ patient.diabetes }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <h1 style="text-align:center;font-family:'Kanit'; font-size:6vh;padding-top:2%">Add Patients</h1>
+  <hr style="width:75%;margin-left:auto;margin-right:auto">
+  <form style="padding:50px;" action="{% url 'patient_management' %}" method="post">
+      {% csrf_token %}
+    <div class="mb-3">
+      <label for="patient_name" class="form-label">Name</label>
+      <input type="text" name="patient_name" class="form-control" id="patient_name">
+    </div>
+    <div class="mb-3">
+      <label for="patient_sex" class="form-label">Sex</label>
+      <input type="text" name="patient_sex" class="form-control" id="patient_sex">
+    </div>
+    <div class="mb-3">
+      <label for="patient_age" class="form-label">Age</label>
+      <input type="text" name="patient_age" class="form-control" id="patient_age">
+    </div>
+    <div class="mb-3">
+      <label for="patient_weight" class="form-label">Weight</label>
+      <input type="text" name="patient_weight" class="form-control" id="patient_weight">
+    </div>
+    <div class="mb-3">
+      <label for="heart_rate" class="form-label">Heart Rate</label>
+      <input type="text" name="heart_rate" class="form-control" id="heart_rate">
+    </div>
+    <div class="mb-3">
+      <label for="bp_systolic" class="form-label">BP Systolic</label>
+      <input type="text" name="bp_systolic" class="form-control" id="bp_systolic">
+    </div>
+    <div class="mb-3">
+      <label for="bp_diastolic" class="form-label">BP Diastolic</label>
+      <input type="text" name="bp_diastolic" class="form-control" id="bp_diastolic">
+    </div>
+    <div class="mb-3">
+      <label for="oxy_rate" class="form-label">Oxygen Rate</label>
+      <input type="text" name="oxy_rate" class="form-control" id="oxy_rate">
+    </div>
+    <div class="mb-3">
+      <label for="cholesterol" class="form-label">Cholesterol (low, borderline_low, normal, borderline_high, high)</label>
+      <input type="text" name="cholesterol" class="form-control" id="cholesterol">
+    </div>
+    <div class="mb-3">
+      <label for="diabetes" class="form-label">Diabetes (low, normal, borderline_high, high)</label>
+      <input type="text" name="diabetes" class="form-control" id="diabetes">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+
+  </form>
+
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap" rel="stylesheet">
+
+
+{% endblock %}
+{% block content %}
+    <div class="container-fluid" style="background: linear-gradient(to right, #c6ebf0, white, #fdf2e0);">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-lg-6">
+            <h1 style="font-family:'Kanit'; font-size:6vh;padding-left:20%;padding-top:10%">We help patients<br> live a healthy,<br> longer life.</h1>
+            <h6 style="color:gray;padding-left:20%;padding-top:10">World class care for everyone. Our health System offers<br>unmatched, expert health care. From the lab to clinic,<br> we never stop finding answers for patients.</h6>
+            <button type="button" class="btn btn-primary" style="margin-left:20%;margin-top:5%;border-radius:30px">Check Health Today</button>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-6">
+            <img src="static/doc-1.png" style="max-width:100%">
+        </div>
+      </div>
+    </div>
+    <div>
+        <img src="static/pic-1.png" style="max-width:100%">
+        <img src="static/pic-2.png" style="max-width:100%">
+    </div>
+    <div class="container-fluid" id="services">
+        <h1 style="text-align:center;font-family:'Kanit'; font-size:6vh;padding-top:2%">Our Medical Services</h1>
+        <h6 style="text-align:center;color:gray">World-class care for everyone. Our health System Offers unmatched, expert health care.</h6>
+        <div class="row" style="margin:3%">
+            <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="card" style="width: 100%;border: 1px solid #0d6efd">
+                  <div class="card-body">
+                    <h5 class="card-title">Speech to SOAP</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Live transcription feature</h6>
+                    <p class="card-text">Converts doctor-patient conversations into SOAP format (Subjective, Objective, Assessment, Plan).
+                        Liberates doctors from extensive note-taking, allowing them to focus more on patient care.
+                    </p>
+                    <a href="{% url 'speech_to_text' %}"><button type="button" class="btn btn-primary" style="margin-top:5%;border-radius:30px;width:100px">More</button></a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="card" style="width: 100%;border: 1px solid #0d6efd;">
+                  <div class="card-body">
+                    <h5 class="card-title">Health Analyzer</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Trends in vital health metrics</h6>
+                    <p class="card-text">Smart comments on inflection points in the patient's health trend over time.
+                        Empowers doctors to make informed decisions without sifting through extensive notes.
+                    </p>
+                    <a href="{% url 'health_analyzer' %}"><button type="button" class="btn btn-primary" style="margin-top:5%;border-radius:30px;width:100px">More</button></a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="card" style="width: 100%;border: 1px solid #0d6efd;">
+                  <div class="card-body">
+                    <h5 class="card-title">Medication tracker</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Tracking prescribed drugs</h6>
+                    <p class="card-text">Tracks adherence based on discussions between doctors
+                         and patients. <br>Tracks adherence based on discussions between doctors and patients.<br>
+                    </p>
+                    <a href="{% url 'medication_tracker' %}"><button type="button" class="btn btn-primary" style="margin-top:5%;border-radius:30px;width:100px">More</button></a>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:3%">
+            <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="card" style="width: 100%;border: 1px solid #0d6efd;">
+                  <div class="card-body">
+                    <h5 class="card-title">Patient SOAP Data</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Detailed Patient History</h6>
+                    <p class="card-text">Stores information about drugs, illnesses, and diagnoses all in one place.Keep track of detailed patient history. From drugs, illness, to diagnosis all information is stored at one place</p>
+                    <a href="{% url 'patient_history' %}"><button type="button" class="btn btn-primary" style="margin-top:5%;border-radius:30px;width:100px">More</button></a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="card" style="width: 100%;border: 1px solid #0d6efd;">
+                  <div class="card-body">
+                    <h5 class="card-title">Tests</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Displays comprehensive information on diagnostic tests</h6>
+                    <p class="card-text">Includes test results, reasons for ordering tests, and test history.
+                        Provides insights into why tests were conducted or not performed
+                        despite being ordered.
+                    </p>
+                    <a><button type="button" class="btn btn-primary" style="margin-top:5%;border-radius:30px;width:100px">More</button></a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="card" style="width: 100%;border: 1px solid #0d6efd;">
+                  <div class="card-body">
+                    <h5 class="card-title">Patient Management</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Efficiently manage patient data</h6>
+                    <p class="card-text">Allows healthcare professionals to manage patient information efficiently.
+                        Track and update patient records, appointments, and medical history. Streamline patient management for better care.</p>
+                    <a href="{% url 'patient_management' %}"><button type="button" class="btn btn-primary" style="margin-top:5%;border-radius:30px;width:100px">More</button></a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background: linear-gradient(to right, #c6ebf0, white, #fdf2e0);">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-lg-6">
+            <h2 style="font-family:'Kanit'; font-size:5vh;padding-top:10%;text-align:center">Features for a doctor</h2>
+            <center><img src="static/pic-3.png" style="max-width:100%;height:400px;"></center>
+            <a href="{% url 'register' %}"><button type="button" class="btn btn-primary" style="margin:auto;display:block;margin-top:20px;border-radius:30px">Join as Doctor</button></a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-6" >
+            <h1 style="font-family:'Kanit';color:#fd6502; font-size:5vh;padding-top:35%;text-align:center">MedSync includes </h1><h1 id="typing_effect" style="font-family:'Kanit'; font-size:5vh;padding-top:1%;text-align:center"></h1>
+        </div>
+      </div>
+      <hr style="margin:0px;margin-top:50px;width:80%;margin-left:auto;margin-right:auto">
+    </div>
+
+    <script>
+        const words = ["intelligent note taking", "health analysis", "patient health tracker", "smart visualization"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const dynamicText = document.getElementById("typing_effect");
+        function typeEffect() {
+
+            const currentWord = words[wordIndex];
+            const currentChar = currentWord.substring(0, charIndex);
+            // console.log(currentWord, currentChar);
+            dynamicText.textContent = currentChar;
+            dynamicText.classList.add("stop-blinking");
+
+            if(!isDeleting && charIndex < currentWord.length){
+                charIndex++;
+                // 200 ms delay
+                setTimeout(typeEffect, 200);
+            }
+            else if(isDeleting && charIndex > 0){
+                charIndex--;
+                setTimeout(typeEffect, 100);
+            }
+            else{
+                isDeleting = !isDeleting;
+                dynamicText.classList.remove("stop-blinking");
+                wordIndex = !isDeleting ? (wordIndex+1)%words.length : wordIndex;
+                setTimeout(typeEffect, 1200);
+            }
+        }
+
+        // Call the typeEffect function when your page loads or at the appropriate time
+        typeEffect();
+    </script>
+
+    <script>
+        // Add an event listener to the Services button
+        document.getElementById('servicesBtn').addEventListener('click', function() {
+            // Scroll to the 'services' section smoothly
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+
+{% endblock %}
