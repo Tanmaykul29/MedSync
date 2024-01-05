@@ -14,10 +14,8 @@ import numpy as np
 from itertools import groupby
 from operator import itemgetter
 
-# openai.api_key = "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"
 client = OpenAI(
-    # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key="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",
+    api_key=""
 )
 
 
