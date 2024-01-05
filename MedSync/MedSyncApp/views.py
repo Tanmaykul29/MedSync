@@ -14,9 +14,10 @@ import numpy as np
 from itertools import groupby
 from operator import itemgetter
 
+# openai.api_key = "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"
 client = OpenAI(
     # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key="YOUR_SECRET_API",
+    api_key="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",
 )
 
 
@@ -353,4 +354,59 @@ def patient_med_tracker(request):
             "bp_dia": bp_dia,
             "visit_dates": visit_dates,
             "smart_notes":reply
+        })
+
+
+def tests(request):
+    doc_id = request.user.id
+    my_patients = PatientHealthData.objects.filter(doctor_id=doc_id)
+    return render(request, "tests.html",{
+        "my_patients":my_patients
+    })
+
+
+def patient_test(request, id):
+    if request.method == "POST":
+        doc_id = request.user.id
+        pat_id = id
+        patient = PatientHealthData.objects.filter(patient_id=pat_id)
+
+        pname=patient[0].patient_name
+        psex=patient[0].patient_sex
+        page=request.POST.get("patient_age")
+        pweight=request.POST.get("patient_weight")
+        pDiag=request.POST.get("patient_illness")
+        pTreat=request.POST.get("patient_medication")
+        pTests = request.POST.get("patient_test_ordered")
+
+        message = "generate smart insights on reason of test ordered and why other test are not ordered for patient data: name= "+pname+" age: "+page+" with weight: "+pweight+" sex:"+psex+" , Diagnosis: "+pDiag+", Treatment: "+pTreat+", Tests ordered: "+pTests
+        completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": message}
+            ]
+        )
+        reply = completion.choices[0].message.content.strip()
+
+
+        Tests.objects.create(
+            patient_id=pat_id,
+            doctor_id = doc_id,
+            patient_name = pname,
+            patient_age = page,
+            patient_sex = psex,
+            patient_weight = pweight,
+            patient_illness = pDiag,
+            patient_medication = pTreat,
+            patient_test_ordered = pTests,
+            visit_date = datetime.now(),
+            smart_insights = reply
+        )
+        return redirect('index')
+    else:
+        doc_id = request.user.id
+        pat_tests = Tests.objects.filter(patient_id=id, doctor_id=doc_id)
+        return render(request, "patient_test.html", {
+            "pat_tests": pat_tests,
+            "patient_id":id
         })
