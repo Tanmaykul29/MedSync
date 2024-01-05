@@ -71,3 +71,17 @@ class PatientHealthData(models.Model):
     oxy_rate = models.IntegerField()
     cholesterol = models.CharField(max_length=256)
     diabetes = models.CharField(max_length=256)
+
+
+class Tests(models.Model):
+    patient_id = models.IntegerField()
+    doctor_id = models.IntegerField()
+    patient_name = models.CharField(max_length=256)
+    patient_age = models.IntegerField()
+    patient_sex = models.CharField(max_length=256)
+    patient_weight = models.IntegerField()
+    patient_illness = models.CharField(max_length=256)
+    patient_medication = models.CharField(max_length=256)
+    patient_test_ordered = models.CharField(max_length=256)
+    visit_date = models.DateTimeField()
+    smart_insights = models.TextField()
