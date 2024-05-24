@@ -1,6 +1,7 @@
 # MedSync App
 
 ## Overview
+[![Watch the video](https://img.youtube.com/vi/mFz0MV-boLo/maxresdefault.jpg)](https://www.youtube.com/watch?v=mFz0MV-boLo)
 
 The inspiration behind building this app was to address the critical issue of medical errors in healthcare. A study by NIH showed that around 5.2 million medical errors take place in India annually. Similarly, the *British Medical Journal* quoted that India, like any other developing country, is recording a lot of medical errors. The main reason being that we do not have trained doctors and nurses to measure the clinical outcomes. These errors can occur due to various factors, including miscommunication and lack of complete patient information.
 
